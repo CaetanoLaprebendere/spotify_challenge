@@ -7,12 +7,11 @@ command, *values = ARGV
 playlist = []
 
 if command == "--add"
-	puts "Please add your song name and specify wether it is played or unplayed"
-	values = gets.chomp
-	playlist << values  
-	puts "Your song " + values + " has been added."
+	p "Please add your song name and specify wether it is played or unplayed"
+    Song.create(song_name: values[0], played_status: values[1])
+	puts "Your song " + values[0] + " has been added."
 elsif command == "--list"
-	p values.each 
+	p Song.all
 elsif command == "--update" 
 	values.delete
 	values = gets.chomp
